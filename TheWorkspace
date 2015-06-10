@@ -1,0 +1,39 @@
+The Workspace
+The workspace is your current R working environment and includes any user-defined objects (vectors, matrices, data frames, lists, functions). At the end of an R session, the user can save an image of the current workspace that is automatically reloaded the next time R is started. Commands are entered interactively at the R user prompt. Up and down arrow keys scroll through your command history. 
+
+You will probably want to keep different projects in different physical directories. Here are some standard commands for managing your workspace.
+IMPORTANT NOTE FOR WINDOWS USERS: 
+   R gets confused if you use a path in your code like
+       c:\mydocuments\myfile.txt
+   This is because R sees "\" as an escape character. Instead, use 
+       c:\\my documents\\myfile.txt
+       c:/mydocuments/myfile.txt
+   Either will work. I use the second convention throughout this website.
+getwd() # print the current working directory - cwd 
+ls()    # list the objects in the current workspace
+setwd(mydirectory)      # change to mydirectory
+setwd("c:/docs/mydir")  # note / instead of \ in windows 
+setwd("/usr/rob/mydir") # on linux
+# view and set options for the session
+help(options) # learn about available options
+options() # view current option settings
+options(digits=3) # number of digits to print on output
+# work with your previous commands
+history() # display last 25 commands
+history(max.show=Inf) # display all previous commands
+
+# save your command history 
+savehistory(file="myfile") # default is ".Rhistory" 
+
+# recall your command history 
+loadhistory(file="myfile") # default is ".Rhistory"
+# save the workspace to the file .RData in the cwd 
+save.image()
+
+# save specific objects to a file
+# if you don't specify the path, the cwd is assumed 
+save(object list,file="myfile.RData")
+# load a workspace into the current session
+# if you don't specify the path, the cwd is assumed 
+load("myfile.RData")
+q() # quit R. You will be prompted to save the workspace.
